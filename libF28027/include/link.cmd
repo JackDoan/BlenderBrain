@@ -1,0 +1,34 @@
+-ml 
+-mt 
+--define="_DEBUG" 
+--define="LARGE_MODEL" 
+--verbose_diagnostics 
+--diag_warning=225 
+--stack_size=0x200 
+--warn_sections 
+-i"./libc" -i"./include" -i"./f2802x_common/lib" 
+--reread_libs 
+--verbose_diagnostics 
+--entry_point=code_start 
+--rom_model 
+-o "a.out" 
+"./main.obj"
+"./include/gpio.obj"
+"./include/sysctrl.obj"
+"./include/epwm.obj"
+"./include/globals.obj"
+"./include/adc.obj"
+"./include/sci.obj"
+"./include/piecontrol.obj"
+"./include/pievect.obj"
+"./include/default_isr.obj"
+/*"./include/F2802x_CSMPasswords.obj"
+"./include/F2802x_CodeStartBranch.obj"*/
+"./include/F2802x_asmfuncs.obj"
+/*"./include/F2802x_usDelay.obj"*/
+-l"./f2802x_common/cmd/nonBIOS.cmd" 
+-l"./f2802x_common/cmd/F28027.cmd" 
+-l"rts2800_ml.lib"
+-l"libc.a" 
+/*-l"IQmath.lib"*/ 
+/*-l"./f2802x_common/lib/driverlib.lib"*/
