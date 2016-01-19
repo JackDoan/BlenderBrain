@@ -3,6 +3,7 @@
 	<name>firmware</name>
 	<comment></comment>
 	<projects>
+		<project>libF28027</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

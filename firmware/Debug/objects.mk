@@ -4,5 +4,5 @@
 
 USER_OBJS :=
 
-LIBS := -l"rts2800_ml.lib" -l"C:/Users/jad140230/Documents/GitHub/BlenderBrain/libF28027/Debug/libF28027.lib"
+LIBS := -l"C:/Users/Jack/Documents/GitHub/BlenderBrain/libF28027/include/libc/libc.a" -l"C:/Users/Jack/Documents/GitHub/BlenderBrain/libF28027/Debug/libF28027.lib"
 
