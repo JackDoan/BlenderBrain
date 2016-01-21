@@ -2,9 +2,10 @@
 # Automatically-generated file. Do not edit!
 ################################################################################
 
-SHELL = cmd.exe
+CG_TOOL_ROOT := /home/jack/ti/ccsv6/tools/compiler/ti-cgt-c2000_6.4.6
 
-CG_TOOL_ROOT := C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_6.4.5
+GEN_OPTS__FLAG := 
+GEN_CMDS__FLAG := 
 
 ORDERED_OBJS += \
 "./init.obj" \
@@ -13,13 +14,13 @@ ORDERED_OBJS += \
 "../F28027.cmd" \
 "../nonBIOS.cmd" \
 $(GEN_CMDS__FLAG) \
--l"C:\Users\Jack\Documents\GitHub\BlenderBrain\libF28027\include\libc\libc.a" \
--l"C:\Users\Jack\Documents\GitHub\BlenderBrain\libF28027\Debug\libF28027.lib" \
+-l"/home/jack/ti/workspace_v6_1/BlenderBrain/libF28027/include/libc/libc.a" \
+-l"/home/jack/ti/workspace_v6_1/BlenderBrain/libF28027/Debug/libF28027.lib" \
 
 -include ../makefile.init
 
-RM := DEL /F
-RMDIR := RMDIR /S/Q
+RM := rm -rf
+RMDIR := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
@@ -134,19 +135,19 @@ BIN_OUTPUTS__QUOTED += \
 all: firmware.out
 
 dependents:
-	-cd C:/Users/Jack/Documents/GitHub/BlenderBrain/libF28027/Debug && $(MAKE) all
+	-cd /home/jack/ti/workspace_v6_1/BlenderBrain/libF28027/Debug && $(MAKE) all
 
 # Tool invocations
-firmware.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS) C:/Users/Jack/Documents/GitHub/BlenderBrain/libF28027/Debug/libF28027.lib
+firmware.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS) /home/jack/ti/workspace_v6_1/BlenderBrain/libF28027/Debug/libF28027.lib
 	@echo 'Building target: $@'
 	@echo 'Invoking: C2000 Linker'
-	"C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_6.4.5/bin/cl2000" -v28 -mt -ml -z --stack_size=0x300 --warn_sections --reread_libs --rom_model -o "firmware.out" $(ORDERED_OBJS)
+	"/home/jack/ti/ccsv6/tools/compiler/ti-cgt-c2000_6.4.6/bin/cl2000" -v28 -mt -ml -z --stack_size=0x300 --warn_sections --reread_libs --rom_model -o "firmware.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
 firmware.hex: $(EXE_OUTPUTS)
 	@echo 'Invoking: C2000 Hex Utility'
-	"C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_6.4.5/bin/hex2000"  -o "firmware.hex" $(EXE_OUTPUTS__QUOTED)
+	"/home/jack/ti/ccsv6/tools/compiler/ti-cgt-c2000_6.4.6/bin/hex2000"  -o "firmware.hex" $(EXE_OUTPUTS__QUOTED)
 	@echo 'Finished building: $@'
 	@echo ' '
 
@@ -160,7 +161,7 @@ clean:
 
 .PHONY: all clean dependents
 .SECONDARY:
-C:/Users/Jack/Documents/GitHub/BlenderBrain/libF28027/Debug/libF28027.lib:
+/home/jack/ti/workspace_v6_1/BlenderBrain/libF28027/Debug/libF28027.lib:
 
 -include ../makefile.targets
 

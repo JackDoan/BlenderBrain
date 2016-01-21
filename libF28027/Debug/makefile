@@ -2,9 +2,10 @@
 # Automatically-generated file. Do not edit!
 ################################################################################
 
-SHELL = cmd.exe
+CG_TOOL_ROOT := /home/jack/ti/ccsv6/tools/compiler/ti-cgt-c2000_6.4.6
 
-CG_TOOL_ROOT := C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_6.4.5
+GEN_OPTS__FLAG := 
+GEN_CMDS__FLAG := 
 
 ORDERED_OBJS += \
 "../include/F2802x_CSMPasswords.obj" \
@@ -53,8 +54,8 @@ $(GEN_CMDS__FLAG) \
 
 -include ../makefile.init
 
-RM := DEL /F
-RMDIR := RMDIR /S/Q
+RM := rm -rf
+RMDIR := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
@@ -174,16 +175,16 @@ all: libF28027.lib
 libF28027.lib: $(OBJS) $(OBJ_SRCS) $(CMD_SRCS) $(LIB_SRCS) $(A_SRCS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: C2000 Archiver'
-	"C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_6.4.5/bin/ar2000" r "libF28027.lib" $(ORDERED_OBJS) $(A_SRCS)
+	"/home/jack/ti/ccsv6/tools/compiler/ti-cgt-c2000_6.4.6/bin/ar2000" r "libF28027.lib" $(ORDERED_OBJS) $(A_SRCS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
 # Other Targets
 clean:
 	-$(RM) $(LIB_OUTPUTS__QUOTED)
-	-$(RM) "f2802x_common\source\F2802x_Adc.pp" "f2802x_common\source\F2802x_Comp.pp" "f2802x_common\source\F2802x_CpuTimers.pp" "f2802x_common\source\F2802x_DefaultIsr.pp" "f2802x_common\source\F2802x_ECap.pp" "f2802x_common\source\F2802x_EPwm.pp" "f2802x_common\source\F2802x_GlobalVariableDefs.pp" "f2802x_common\source\F2802x_Gpio.pp" "f2802x_common\source\F2802x_I2C.pp" "f2802x_common\source\F2802x_OscComp.pp" "f2802x_common\source\F2802x_PieCtrl.pp" "f2802x_common\source\F2802x_PieVect.pp" "f2802x_common\source\F2802x_SWPrioritizedDefaultIsr.pp" "f2802x_common\source\F2802x_SWPrioritizedPieVect.pp" "f2802x_common\source\F2802x_Sci.pp" "f2802x_common\source\F2802x_Spi.pp" "f2802x_common\source\F2802x_SysCtrl.pp" "f2802x_common\source\F2802x_TempSensorConv.pp" 
-	-$(RM) "f2802x_common\source\F2802x_Adc.obj" "f2802x_common\source\F2802x_Comp.obj" "f2802x_common\source\F2802x_CpuTimers.obj" "f2802x_common\source\F2802x_DefaultIsr.obj" "f2802x_common\source\F2802x_ECap.obj" "f2802x_common\source\F2802x_EPwm.obj" "f2802x_common\source\F2802x_GlobalVariableDefs.obj" "f2802x_common\source\F2802x_Gpio.obj" "f2802x_common\source\F2802x_I2C.obj" "f2802x_common\source\F2802x_OscComp.obj" "f2802x_common\source\F2802x_PieCtrl.obj" "f2802x_common\source\F2802x_PieVect.obj" "f2802x_common\source\F2802x_SWPrioritizedDefaultIsr.obj" "f2802x_common\source\F2802x_SWPrioritizedPieVect.obj" "f2802x_common\source\F2802x_Sci.obj" "f2802x_common\source\F2802x_Spi.obj" "f2802x_common\source\F2802x_SysCtrl.obj" "f2802x_common\source\F2802x_TempSensorConv.obj" "f2802x_common\source\F2802x_asmfuncs.obj" 
-	-$(RM) "f2802x_common\source\F2802x_asmfuncs.pp" 
+	-$(RM) "f2802x_common/source/F2802x_Adc.pp" "f2802x_common/source/F2802x_Comp.pp" "f2802x_common/source/F2802x_CpuTimers.pp" "f2802x_common/source/F2802x_DefaultIsr.pp" "f2802x_common/source/F2802x_ECap.pp" "f2802x_common/source/F2802x_EPwm.pp" "f2802x_common/source/F2802x_GlobalVariableDefs.pp" "f2802x_common/source/F2802x_Gpio.pp" "f2802x_common/source/F2802x_I2C.pp" "f2802x_common/source/F2802x_OscComp.pp" "f2802x_common/source/F2802x_PieCtrl.pp" "f2802x_common/source/F2802x_PieVect.pp" "f2802x_common/source/F2802x_SWPrioritizedDefaultIsr.pp" "f2802x_common/source/F2802x_SWPrioritizedPieVect.pp" "f2802x_common/source/F2802x_Sci.pp" "f2802x_common/source/F2802x_Spi.pp" "f2802x_common/source/F2802x_SysCtrl.pp" "f2802x_common/source/F2802x_TempSensorConv.pp" 
+	-$(RM) "f2802x_common/source/F2802x_Adc.obj" "f2802x_common/source/F2802x_Comp.obj" "f2802x_common/source/F2802x_CpuTimers.obj" "f2802x_common/source/F2802x_DefaultIsr.obj" "f2802x_common/source/F2802x_ECap.obj" "f2802x_common/source/F2802x_EPwm.obj" "f2802x_common/source/F2802x_GlobalVariableDefs.obj" "f2802x_common/source/F2802x_Gpio.obj" "f2802x_common/source/F2802x_I2C.obj" "f2802x_common/source/F2802x_OscComp.obj" "f2802x_common/source/F2802x_PieCtrl.obj" "f2802x_common/source/F2802x_PieVect.obj" "f2802x_common/source/F2802x_SWPrioritizedDefaultIsr.obj" "f2802x_common/source/F2802x_SWPrioritizedPieVect.obj" "f2802x_common/source/F2802x_Sci.obj" "f2802x_common/source/F2802x_Spi.obj" "f2802x_common/source/F2802x_SysCtrl.obj" "f2802x_common/source/F2802x_TempSensorConv.obj" "f2802x_common/source/F2802x_asmfuncs.obj" 
+	-$(RM) "f2802x_common/source/F2802x_asmfuncs.pp" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

@@ -7,7 +7,7 @@
 #include "DSP28x_Project.h"
 #include "libSCI.h"
 
-#define PWM_FREQ 4500
+#define PWM_FREQ 3000 //set to 10k
 #define DUTY_50 PWM_FREQ/2
 // ECCTL1 ( ECAP Control Reg 1) //==========================
 // CAPxPOL bits
@@ -115,8 +115,8 @@ void epwmInit(int freq, int duty) {
 	//InitGpio();
 	//freq = freq * 4500;//freq = 1 = 10 kHz
 	// EPWM Module 1 config
-  	//TBCLK prescaler = /1 so TBCLK = 90,000,000
-	EPwm1Regs.TBPRD = freq; // Period = 2(freq)/(TBCLK) = freq/45,000
+  	//TBCLK prescaler = /1 so TBCLK = 60,000,000
+	EPwm1Regs.TBPRD = freq; // Period = 2(freq)/(TBCLK) = freq/30,000
 	EPwm1Regs.TBPHS.half.TBPHS = 0; // Set Phase register to zero
 	EPwm1Regs.TBCTL.bit.CTRMODE = TB_COUNT_UPDOWN; // Symmetrical mode
 	EPwm1Regs.TBCTL.bit.PHSEN = TB_DISABLE; // Master module
@@ -164,8 +164,8 @@ void epwmInit(int freq, int duty) {
 	EPwm3Regs.AQCTLA.bit.CAD = AQ_CLEAR;
 	EPwm3Regs.DBCTL.bit.OUT_MODE = DB_FULL_ENABLE; // enable Dead-band module
 	EPwm3Regs.DBCTL.bit.POLSEL = DB_ACTV_HIC; // Active Hi complementary
-	EPwm3Regs.DBFED = 20; // FED = 20 TBCLKs  Target value = ~1us
-	EPwm3Regs.DBRED = 20; // RED = 20 TBCLKs
+	EPwm3Regs.DBFED = 20; // Falling Edge Delay = 20 TBCLKs  Target value = ~1us
+	EPwm3Regs.DBRED = 20; // Rising Edge Delay = 20 TBCLKs
 
 	EPwm1Regs.CMPA.half.CMPA = (duty); // adjust duty cycles
 	EPwm2Regs.CMPA.half.CMPA = (duty); //

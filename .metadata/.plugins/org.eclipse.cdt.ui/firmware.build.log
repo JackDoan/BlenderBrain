@@ -1,7 +1,17 @@
 
 **** Build of configuration Debug for project firmware ****
 
-"C:\\ti\\ccsv6\\utils\\bin\\gmake" -j 8 all 
-gmake: Nothing to be done for `all'.
+/home/jack/ti/ccsv6/utils/bin/gmake -j 4 all 
+Building file: ../main.c
+Invoking: C2000 Compiler
+"/home/jack/ti/ccsv6/tools/compiler/ti-cgt-c2000_6.4.6/bin/cl2000" -v28 -mt -ml --include_path="/home/jack/ti/workspace_v6_1/BlenderBrain/libF28027" --include_path="/home/jack/ti/workspace_v6_1/BlenderBrain/libF28027/include" --preproc_with_compile --preproc_dependency="main.pp"  "../main.c"
+Finished building: ../main.c
+ 
+Building target: firmware.out
+Invoking: C2000 Linker
+"/home/jack/ti/ccsv6/tools/compiler/ti-cgt-c2000_6.4.6/bin/cl2000" -v28 -mt -ml -z --stack_size=0x300 --warn_sections --reread_libs --rom_model -o "firmware.out" "./init.obj" "./libSCI.obj" "./main.obj" "../F28027.cmd" "../nonBIOS.cmd"  -l"/home/jack/ti/workspace_v6_1/BlenderBrain/libF28027/include/libc/libc.a" -l"/home/jack/ti/workspace_v6_1/BlenderBrain/libF28027/Debug/libF28027.lib" 
+<Linking>
+Finished building target: firmware.out
+ 
 
 **** Build Finished ****

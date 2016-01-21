@@ -1,1 +1,1 @@
--v28 -mt -ml -z --stack_size=0x300 --warn_sections --reread_libs --rom_model -o "C:/Users/Jack/Documents/GitHub/BlenderBrain/firmware/Debug/firmware.out"
+-v28 -mt -ml -z --stack_size=0x300 --warn_sections --reread_libs --rom_model -o "/home/jack/ti/workspace_v6_1/BlenderBrain/firmware/Debug/firmware.out"

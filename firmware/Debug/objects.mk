@@ -4,5 +4,5 @@
 
 USER_OBJS :=
 
-LIBS := -l"C:/Users/Jack/Documents/GitHub/BlenderBrain/libF28027/include/libc/libc.a" -l"C:/Users/Jack/Documents/GitHub/BlenderBrain/libF28027/Debug/libF28027.lib"
+LIBS := -l"/home/jack/ti/workspace_v6_1/BlenderBrain/libF28027/include/libc/libc.a" -l""
 

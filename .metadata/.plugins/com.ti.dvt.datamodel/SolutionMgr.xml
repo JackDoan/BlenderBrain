@@ -5,7 +5,7 @@
    <string>defaultSolution</string>
    <void method="set">
     <object idref="SolutionManager$PersistState0"/>
-    <string>C:\ti\ccsv6\ccs_base\dvt_4.0.0.201501151820\CodeGen\solutions\CodeGenCoverage</string>
+    <string>/home/jack/ti/ccsv6/ccs_base/dvt_4.1.0.201507151655/CodeGen/solutions/CodeGenCoverage</string>
    </void>
   </void>
  </object>
@@ -14,10 +14,10 @@
  <void id="ArrayList0" method="get">
   <object idref="SolutionManager$PersistState0"/>
   <void method="add">
-   <string>C:\Users\Jack\Documents\GitHub\BlenderBrain\dvt\AnalysisSolutionsTemp\AnalysisSolution1452826976077\null</string>
+   <string>/home/jack/ti/workspace_v6_1/BlenderBrain/dvt/AnalysisSolutionsTemp/AnalysisSolution1453311135502/null</string>
   </void>
   <void method="add">
-   <string>C:\ti\ccsv6\ccs_base\dvt_4.0.0.201501151820\CodeGen\solutions\CodeGenCoverage</string>
+   <string>/home/jack/ti/ccsv6/ccs_base/dvt_4.1.0.201507151655/CodeGen/solutions/CodeGenCoverage</string>
   </void>
  </void>
 </void>

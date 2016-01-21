@@ -1,1 +1,1 @@
-"./init.obj" "./libSCI.obj" "./main.obj" "../F28027.cmd" "../nonBIOS.cmd" -l"C:\Users\Jack\Documents\GitHub\BlenderBrain\libF28027\include\libc\libc.a" -l"C:\Users\Jack\Documents\GitHub\BlenderBrain\libF28027\Debug\libF28027.lib" 
+"./init.obj" "./libSCI.obj" "./main.obj" "../F28027.cmd" "../nonBIOS.cmd" -l"/home/jack/ti/workspace_v6_1/BlenderBrain/libF28027/include/libc/libc.a" -l"/home/jack/ti/workspace_v6_1/BlenderBrain/libF28027/Debug/libF28027.lib" 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.0"?>
 
-<!-- Auto-generated from: C:\Users\Jack\Documents\GitHub\BlenderBrain\.metadata\.plugins\com.ti.ccstudio.builddefinitions.generator\native\MSP430_4.4.4.xml -->
+<!-- Auto-generated from: /home/jack/ti/workspace_v6_1/BlenderBrain/.metadata/.plugins/com.ti.ccstudio.builddefinitions.generator/native/MSP430_4.4.5.xml -->
 
 <plugin>
 
@@ -2524,14 +2524,6 @@ Use '--printf_support=minimal' to exclude support for width and precision flags 
 				command="--mapfile_contents="
 				valueType="string"/>
 			<option
-				id="com.ti.ccstudio.buildDefinitions.MSP430_4.4.linkerID.ROM"
-				name="Create a ROM object (--rom)"
-				tip="Aliases: --rom&lt;BODY&gt;This option allows the creation of ROM object module"
-				category="com.ti.ccstudio.buildDefinitions.MSP430_4.4.cat.linkerID.LNKOUTF"
-				defaultValue="false"
-				command="--rom"
-				valueType="boolean"/>
-			<option
 				id="com.ti.ccstudio.buildDefinitions.MSP430_4.4.linkerID.RELOCATABLE"
 				name="Produce a relocatable output module (--relocatable, -r)"
 				tip="Aliases: --relocatable, -r&lt;BODY&gt;Produce a relocatable output module"
@@ -3684,7 +3676,6 @@ NOTE: User can specify --retain='*(*)' to retain all the sections from all the i
 			<option command="-a" tag="ABSOLUTE_EXE"/>
 			<option command="--absolute_exe" tag="ABSOLUTE_EXE"/>
 			<option command="--mapfile_contents" tag="MAPFILE_CONTENTS"/>
-			<option command="--rom" tag="ROM"/>
 			<option command="-r" tag="RELOCATABLE"/>
 			<option command="--relocatable" tag="RELOCATABLE"/>
 			<option command="--ecc:ecc_error" tag="ECC__ECC_ERROR"/>

@@ -4,38 +4,38 @@
 
 #include "DSP28x_Project.h"
 #include "init.h"
+#include "flags.h"
 #include <stdio.h>
 #include "libSCI.h"
 void epwmChangeDC(int*dc);
 
 int muxState;
-int handyDandy;
 long outputs[3];
-int failSafe;
-int updateDC;
 int errors;
-int writeOutputsFlag;
 long longestTime;
 long tooLong;
-int calibrationFlag;
 float calibMin[3];
 float calibScale[3];
 Uint16 sciData;
+
+flags_obj flags = {0};
+
 int main(void) {
+
 	memcpy(&RamfuncsRunStart, &RamfuncsLoadStart, (size_t)&RamfuncsLoadSize); //only needed for flash
 	boardSetup();
 	errors = 0;
-	int dcHasChanged = 1;
-	int notConnected = 0;
 	sciData = 0;
-	writeOutputsFlag = 0;
 	outputs[0] = 0;
 	outputs[1] = 0;
 	outputs[2] = 0;
 	muxState = 0;
-	updateDC = 0;
-	failSafe = true;
-	calibrationFlag = 0;
+	flags.dutyCycle = 0;
+	flags.writeDutyCycle = 0;
+	flags.failsafe = 1;
+	flags.controllerPresent = 0;
+	flags.calibrate = 0;
+
 	calibMin[0] = 6600;
 	calibMin[1] = 6600;
 	calibMin[2] = 6600;
@@ -63,18 +63,18 @@ int main(void) {
 	scia_ln(title);
 	scia_ln(helpPrompt);
 
-	while (failSafe) {
-		if(updateDC) { //update PWM outputs:
+	while (flags.failsafe) {
+		if(flags.dutyCycle) { //update PWM outputs:
 			//convert outputs[n] to duty cycle values
 			dc[0] = (int)((outputs[0]-calibMin[0])*((float)PWM_FREQ)/(calibScale[0]));
 			dc[1] = (int)((outputs[1]-calibMin[1])*((float)PWM_FREQ)/(calibScale[1]));
 			dc[2] = (int)((outputs[2]-calibMin[2])*((float)PWM_FREQ)/(calibScale[2]));
 			epwmChangeDC(dc);
-			updateDC = 0;
-			dcHasChanged = 1;
+			flags.dutyCycle = 0;
+			flags.dutyCycleChanged = 1;
 		}
-		else if (((dc[0] == 0)&&(dc[1] == 0)&&(dc[2] == 0)) || (notConnected)) {
-			failSafe = 0;
+		else if (((dc[0] == 0)&&(dc[1] == 0)&&(dc[2] == 0)) || !(flags.controllerPresent)) {
+			flags.failsafe = 0;
 			scia_ln(clearScreen);
 			scia_ln(title);
 			scia_ln(noController);
@@ -90,7 +90,7 @@ int main(void) {
 		if (sciData) {
 			switch (sciData) {
 			case (int)'q':
-				writeOutputsFlag = !writeOutputsFlag;
+				flags.writeDutyCycle = !flags.writeDutyCycle;
 			break;
 
 			case (int)'c':
@@ -100,7 +100,7 @@ int main(void) {
 				break;
 
 			case (int)'C':
-				calibrationFlag = 1;
+				flags.calibrate = 1;
 				break;
 
 			case (int)'o':
@@ -117,7 +117,7 @@ int main(void) {
 			sciData = 0;
 		}
 		//menu subroutines:
-		if(writeOutputsFlag && dcHasChanged) {
+		if(flags.writeDutyCycle && flags.dutyCycleChanged) {
 			scia_ln(clearScreen);
 			scia_ln(title);
 			scia_ln(ctrlLevels);
@@ -127,10 +127,10 @@ int main(void) {
 			scia_ln(printBuffer);
 			sprintf(printBuffer, "Spin Motors: %d\r\n",dc[2]);
 			scia_ln(printBuffer);
-			dcHasChanged = 0;
+			flags.dutyCycleChanged = 0;
 		}
 
-		if(calibrationFlag) {
+		if(flags.calibrate) {
 			/*
 			 * for each (input) {
 			 * measureMiddle
@@ -142,13 +142,13 @@ int main(void) {
 			 * writeToFlash
 			 * }
 			 */
-			 calibrationFlag = 0;
+			flags.calibrate= 0;
 		}
 	}
 
-	while(!failSafe) {
-		if(updateDC)
-			failSafe = 1;
+	while(!flags.failsafe) {
+		if(flags.dutyCycle)
+			flags.failsafe = 1;
 	}
 
 
@@ -157,22 +157,22 @@ int main(void) {
 
 __interrupt void ecap1_isr(void)
 {
-	updateDC = 1;
+	flags.dutyCycle = 1;
 	long min = (long)calibMin[muxState];
 	long max = (long)calibScale[muxState]+min;
-	long tooMuch = max + max/10;
-	long tooLittle = min-min/10;
+	long tooMuch   = max + (max/10);
+	long tooLittle = min - (min/10);
 
 	unsigned long duty = ECap1Regs.CAP2/10; // Calculate On time
 
 
 	if ((duty > tooMuch) || (duty < tooLittle)) {
-		//ignore or fail to neutral?
-		outputs[muxState] = max/2; //fail to neutral
+		//TODO: ignore this cycle or fail to neutral?
+		outputs[muxState] = max/2; //fail to neutral for now. maybe make this configurable.
 		errors++;
 	}
 	else if(duty < min+min/20){
-		outputs[muxState] = min+min/20;
+		outputs[muxState] = min+min/20; //if we're within 5%
 	}
 	else if(duty > max-max/20) {
 		outputs[muxState] = max-max/20;
